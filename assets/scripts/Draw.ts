@@ -15,11 +15,7 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class NewClass extends cc.Component {
 
-    @property(cc.Label)
-    label: cc.Label = null;
 
-    @property
-    text: string = 'hello';
 
     @property(cc.Node)
     board: cc.Node = null;
@@ -46,7 +42,7 @@ export default class NewClass extends cc.Component {
     private lineWidth: number = 1;
     //橡皮擦宽
     private eraserWidth: number = 10;
-    private curcolor;
+    private curColor :  cc.Color = cc.color(0, 0, 0, 255);
     private curBrushWidth;
     private curEraserWidth;
 
@@ -103,8 +99,8 @@ export default class NewClass extends cc.Component {
 
     blackBtnEvent() {
         if (this.tool == this.brush_tool) {
-            this.curcolor = new cc.Color(0, 0, 0, 255)
-            this.drawManager.setStrokeColor(this.curcolor);
+            this.curColor = new cc.Color(0, 0, 0, 255)
+            this.drawManager.setStrokeColor(this.curColor);
 
             for (let i = 0; i < this.colorLayout.children.length; i++) {
                 if (i == 0) {
@@ -119,8 +115,8 @@ export default class NewClass extends cc.Component {
 
     redBtnEvent() {
         if (this.tool == this.brush_tool) {
-            this.curcolor = new cc.Color(255, 0, 0, 255)
-            this.drawManager.setStrokeColor(this.curcolor);
+            this.curColor = new cc.Color(255, 0, 0, 255)
+            this.drawManager.setStrokeColor(this.curColor);
 
             for (let i = 0; i < this.colorLayout.children.length; i++) {
                 if (i == 1) {
@@ -135,8 +131,8 @@ export default class NewClass extends cc.Component {
 
     greenBtnEvent() {
         if (this.tool == this.brush_tool) {
-            this.curcolor = new cc.Color(0, 255, 0, 255)
-            this.drawManager.setStrokeColor(this.curcolor);
+            this.curColor = new cc.Color(0, 255, 0, 255)
+            this.drawManager.setStrokeColor(this.curColor);
             for (let i = 0; i < this.colorLayout.children.length; i++) {
                 if (i == 2) {
                     this.colorLayout.children[i].opacity = 255
@@ -150,8 +146,8 @@ export default class NewClass extends cc.Component {
 
     blueBtnEvent() {
         if (this.tool == this.brush_tool) {
-            this.curcolor = new cc.Color(0, 0, 255, 255)
-            this.drawManager.setStrokeColor(this.curcolor);
+            this.curColor = new cc.Color(0, 0, 255, 255)
+            this.drawManager.setStrokeColor(this.curColor);
 
             for (let i = 0; i < this.colorLayout.children.length; i++) {
                 if (i == 3) {
@@ -166,8 +162,8 @@ export default class NewClass extends cc.Component {
 
     yellowBtnEvent() {
         if (this.tool == this.brush_tool) {
-            this.curcolor = new cc.Color(255, 255, 0, 255)
-            this.drawManager.setStrokeColor(this.curcolor);
+            this.curColor = new cc.Color(255, 255, 0, 255)
+            this.drawManager.setStrokeColor(this.curColor);
 
             for (let i = 0; i < this.colorLayout.children.length; i++) {
                 if (i == 4) {
@@ -182,8 +178,8 @@ export default class NewClass extends cc.Component {
 
     purpleBtnEvent() {
         if (this.tool == this.brush_tool) {
-            this.curcolor = new cc.Color(255, 0, 255, 255)
-            this.drawManager.setStrokeColor(this.curcolor);
+            this.curColor = new cc.Color(255, 0, 255, 255)
+            this.drawManager.setStrokeColor(this.curColor);
 
             for (let i = 0; i < this.colorLayout.children.length; i++) {
                 if (i == 5) {
@@ -202,8 +198,8 @@ export default class NewClass extends cc.Component {
         this.toolLayout.children[0].opacity = 255
         this.toolLayout.children[1].opacity = 100
         this.toolLayout.children[2].opacity = 255
-
-        this.drawManager.setStrokeColor(this.curcolor);
+        this.drawManager.setStrokeColor(this.curColor);
+        // this.drawManager.setStrokeColor(new cc.Color(0, 0, 0, 255));
 
         //设置slider上handle位置
         this.widthSlider.getComponent(cc.Slider).progress = (this.lineWidth - 1) / 5
